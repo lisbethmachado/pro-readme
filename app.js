@@ -29,7 +29,6 @@ const questions = [
   },
 ];
 
-// function to initialize program
 function init() {
   inquirer.prompt(questions).then((answers) => {
     const writeFile = `
@@ -59,7 +58,7 @@ function init() {
       ## Contributing
       
       `;
-    // writeFile("./" + answers.title + ".md", writeFile);
+    
     fs.writeFile(answers.title + ".md", writeFile, (error) => {
       if (error) {
         return console.log(error);
@@ -69,18 +68,10 @@ function init() {
     });
     });
   }
-// function call to initialize program
 init();
 
 
-  // Dynamic MD
-
-//   * Title user input
-//   * Description user input
-//   * Table of Contents generate
-//   * Installation user input
-//   * Usage user input
-//   * License choose 1
+// Add below items to table of contents
 //   * Contributing user input
 //   * Tests
 //   * Questions
