@@ -4,16 +4,6 @@ const fs = require("fs");
 const questions = [
   {
     type: "input",
-    message: "Enter your Github username:",
-    name: "github",
-  },
-  {
-    type: "input",
-    message: "Enter your primary email:",
-    name: "email",
-  },
-  {
-    type: "input",
     message: "Enter the title of your project:",
     name: "title",
   },
@@ -33,19 +23,30 @@ const questions = [
     name: "usage",
   },
   {
+    type: "input",
+    message: "Give instructions for contributing:",
+    name: "contributing"
+  },
+  {
     type: "list",
     message: "Which is your preferred license?",
     name: "license",
     choices: [
       "Mozilla",
-      "The MIT",
-      "The Artistic"
+      "MIT",
+      "Artistic",
+      "None"
     ]
   },
   {
     type: "input",
-    message: "Give instructions for contributing:",
-    name: "contributing"
+    message: "Enter your Github username:",
+    name: "github",
+  },
+  {
+    type: "input",
+    message: "Enter your primary email:",
+    name: "email",
   },
 ];
 
