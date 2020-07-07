@@ -1,6 +1,24 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+const licenses = [
+  {
+    name: "Mozilla",
+    url: "https://opensource.org/licenses/MPL-2.0",
+    shield: "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)]",
+  },
+   {
+    name: "MIT",
+    url: "https://opensource.org/licenses/MIT",
+    shield: "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)",
+  },
+  {
+    name: "Artistic",
+    url: "https://opensource.org/licenses/Artistic-2.0",
+    shield: "![Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)",
+  },
+]
+
 const questions = [
   {
     type: "input",
@@ -23,20 +41,15 @@ const questions = [
     name: "usage",
   },
   {
-    type: "input",
-    message: "Give instructions for contributing:",
-    name: "contributing"
+    type: "list",
+    message: "Which of the following is your preferred license?",
+    name: "license",
+    choices: licenses.map((license) => license.name),
   },
   {
-    type: "list",
-    message: "Which is your preferred license?",
-    name: "license",
-    choices: [
-      "Mozilla",
-      "MIT",
-      "Artistic",
-      "None"
-    ]
+    type: "input",
+    message: "Describe the process for contributing:",
+    name: "contributing"
   },
   {
     type: "input",
@@ -52,8 +65,8 @@ const questions = [
 
 function init() {
   inquirer.prompt(questions).then((answers) => {
-    const writeFile =
-      `## ${answers.title}
+const writeFile =
+`## ${answers.title}
 
 ## Description
 ${answers.description}
@@ -62,7 +75,11 @@ ${answers.description}
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
-      
+* [Badges](#badges)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)  
+
 ## Installation
 ${answers.installation}
 
@@ -70,6 +87,8 @@ ${answers.installation}
 ${answers.usage}
       
 ## License
+
+This project is licensed under the chosen license.
       
 ## Badges
 
@@ -84,21 +103,16 @@ ${answers.usage}
 ## Tests
 
 ## Questions
-For more information visit [http://www.github.com/${answers.github}]. You may contact ${answers.email} with any questions or suggestions you may have. Thank you for your interest!`;
+For repository and more information visit [Github](http://www.github.com/${answers.github}). You may contact us via [E-mail](mailto:${answers.email}) with questions or suggestions. Thank you for your interest!`;
 
     fs.writeFile(answers.title + ".md", writeFile, (error) => {
       if (error) {
         return console.log(error);
       }
+      // fs.appendFile(answers.title + ".md", writeFile, (lisence));
       console.log("Success!");
-
     });
   });
 }
+
 init();
-
-
-// Add below items to table of contents
-//   * Contributing user input
-//   * Tests
-//   * Questions
