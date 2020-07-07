@@ -20,7 +20,7 @@ To run this application successfully, first you must install the following packa
 This application may be used to compose efficient, uniform, and professional readme files. You are able to add your repository information, along with any contact or licensing you require.
       
 ## License
-This project is licensed under the [![License: MIT](https://opensource.org/licenses/MIT)] license.
+This project is licensed under the [License: MIT](https://opensource.org/licenses/MIT) license.
       
 ## Badges
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
