@@ -1,6 +1,48 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+// require("dotenv").config();
+const express = require("express");
+const app = express();
+const path = require("path");
+const morgan = require("morgan");
+// const initDb = require("./config/initDb");
+// const authRouter = require("./routes/auth");
+// const usersRouter = require("./routes/users");
+// const taskRouter = require("./routes/taskAPI");
+// const errorMiddleware = require("./routes/errorMiddleware");
+
+const PORT = process.env.PORT || 3001;
+
+// log all requests to the console in development
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
+
+// Setting up express to use json and set it to req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve up static assets in production (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+// app.use(authRouter, usersRouter, taskRouter, errorMiddleware);
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/index.html"));
+});
+
+// Send all other requests to react app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`🌎 ==> Server now on port ${PORT}!`);
+});
+
 const licenses = [
   {
     name: "Mozilla",
@@ -110,7 +152,7 @@ For repository and more information visit [Github](http://www.github.com/${answe
         return console.log(error);
       }
       // fs.appendFile(answers.title + ".md", writeFile, (lisence));
-      console.log("Success!");
+      console.log("Writing file...");
     });
   });
 }
