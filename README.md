@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a professional ReadMe generating app.
+This is a professional ReadMe generating app. It allows the user to answer questions and efficiently generate well constructed ReadMe markdown templates for any project at the snap of a finger.
 
 ## Table of Contents    
 * [Installation](#installation)
