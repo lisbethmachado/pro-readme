@@ -32,4 +32,4 @@ To contribute to this application, you may clone and submit suggestions to the g
 This application requires positive tests and negative tests before any additional modifications.
 
 ## Questions
-For repository and more information visit [Github](http://www.github.com/lisbethmachado). You may contact us via [E-mail](mailto:lizmachado.xo@gmail.com) with questions or suggestions. Thank you for your interest!
+For repository and more information visit [Github](http://www.github.com/lisbethmachado). You may contact us via [E-mail](mailto:lisbeth.webdev@gmail.com) with questions or suggestions. Thank you for your interest!
