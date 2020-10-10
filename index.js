@@ -14,6 +14,10 @@ const morgan = require("morgan");
 
 const PORT = process.env.PORT || 3001;
 
+app.listen(PORT, () => {
+  console.log(`🌎 ==> Server now on port ${PORT}!`);
+});
+
 // log all requests to the console in development
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
@@ -35,13 +39,9 @@ app.get("/", (req, res) => {
 });
 
 // Send all other requests to react app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-app.listen(PORT, () => {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 const licenses = [
   {
@@ -105,7 +105,8 @@ const questions = [
   },
 ];
 
-function init() {
+async function init() {
+  await PORT;
   inquirer.prompt(questions).then((answers) => {
 const writeFile =
 `## ${answers.title}
