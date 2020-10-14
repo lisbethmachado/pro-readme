@@ -64,6 +64,11 @@ const licenses = [
 const questions = [
   {
     type: "input",
+    message: "Enter the name for your markdown file:",
+    name: "name",
+  },
+  {
+    type: "input",
     message: "Enter the title of your project:",
     name: "title",
   },
@@ -95,6 +100,16 @@ const questions = [
   },
   {
     type: "input",
+    message: "Enter your First Name:",
+    name: "firstname"
+  },
+  {
+    type: "input",
+    message: "Enter your Last Name:",
+    name: "lastname"
+  },
+  {
+    type: "input",
     message: "Enter your Github username:",
     name: "github",
   },
@@ -110,30 +125,36 @@ async function init() {
   inquirer.prompt(questions).then((answers) => {
 const writeFile =
 `## ${answers.title}
+${answers.license}
 
 ## Description
 ${answers.description}
 
 ## Table of Contents    
-* [Installation](#installation)
+* [Quick Start](#quick-start)
 * [Usage](#usage)
-* [License](#license)
-* [Badges](#badges)
-* [Contributing](#contributing)
+* [Screenshots](#screenshots)
 * [Tests](#tests)
 * [Questions](#questions)  
+* [License](#license)
 
-## Installation
+## Quick Start
 ${answers.installation}
 
 ## Usage 
 ${answers.usage}
+
+## Screenshots
+
+## Tests
       
 ## License
 
-This project is licensed under the chosen license.
+Copyright 2020 - present ${answers.firstname}${answers.lastname}.
+This project is licensed under the terms of the MIT license. 
+More information is available at [opensource.org/licenses](https://opensource.org/licenses/MIT)
       
-## Badges
+
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
