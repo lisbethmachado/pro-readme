@@ -159,7 +159,8 @@ For repository and more information visit [Github](http://www.github.com/${answe
       // fs.appendFile(answers.title + ".md", writeFile, (lisence));
       console.log("Writing file... Look inside your top level folder!");
     });
-  });
+  })
+  process.exit(1);
 }
 
 init();
