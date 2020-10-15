@@ -79,7 +79,7 @@ const questions = [
   },
   {
     type: "input",
-    message: "Provide a step-by-step description of installation and required packages:",
+    message: "Provide a step-by-step Quick Start for installation and use:",
     name: "installation",
   },
   {
@@ -92,11 +92,6 @@ const questions = [
     message: "Which of the following is your preferred license?",
     name: "license",
     choices: licenses.map((license) => license.name),
-  },
-  {
-    type: "input",
-    message: "Describe the process for contributing:",
-    name: "contributing"
   },
   {
     type: "input",
@@ -125,7 +120,7 @@ async function init() {
   inquirer.prompt(questions).then((answers) => {
 const writeFile =
 `## ${answers.title}
-${answers.license}
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)(https://opensource.org/licenses/MIT)
 
 ## Description
 ${answers.description}
@@ -147,34 +142,22 @@ ${answers.usage}
 ## Screenshots
 
 ## Tests
-      
+
 ## License
 
-Copyright 2020 - present ${answers.firstname}${answers.lastname}.
+Copyright 2020 - present ${answers.firstname} ${answers.lastname}.
 This project is licensed under the terms of the MIT license. 
 More information is available at [opensource.org/licenses](https://opensource.org/licenses/MIT)
-      
-
-
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
-      
-## Contributing
-
-## Tests
 
 ## Questions
 For repository and more information visit [Github](http://www.github.com/${answers.github}). You may contact us via [E-mail](mailto:${answers.email}) with questions or suggestions. Thank you for your interest!`;
 
-    fs.writeFile(answers.title + ".md", writeFile, (error) => {
+    fs.writeFile(answers.name + ".md", writeFile, (error) => {
       if (error) {
         return console.log(error);
       }
       // fs.appendFile(answers.title + ".md", writeFile, (lisence));
-      console.log("Writing file...");
+      console.log("Writing file... Look inside your top level folder!");
     });
   });
 }
