@@ -1,16 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
 const morgan = require("morgan");
-// const initDb = require("./config/initDb");
-// const authRouter = require("./routes/auth");
-// const usersRouter = require("./routes/users");
-// const taskRouter = require("./routes/taskAPI");
-// const errorMiddleware = require("./routes/errorMiddleware");
 
 const PORT = process.env.PORT || 3001;
 
